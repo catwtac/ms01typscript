@@ -30,36 +30,66 @@ let taskSix: Task = {
     date: new Date()          // Date actuelle
 }
 
-// Initialisation d'une liste de tâches
-let taskListTwo: Array<Task> = [];
-taskListTwo.push(taskFor);       // Ajout de la première tâche à la liste
-taskListTwo.push(taskFive);       // Ajout de la deuxième tâche à la liste
-taskListTwo.push(taskSix);     // Ajout de la troisième tâche à la liste
+// // Initialisation d'une liste de tâches
+// let taskListTwo: Array<Task> = [];
+// taskListTwo.push(taskFor);       // Ajout de la première tâche à la liste
+// taskListTwo.push(taskFive);       // Ajout de la deuxième tâche à la liste
+// taskListTwo.push(taskSix);     // Ajout de la troisième tâche à la liste
 
 
-let totalSomme: number = 0;
+// let totalSomme: number = 0;
 
-for (let task of taskListTwo) {
-    // Si le nombre de jours de la tâche est supérieur à 4
-    if (task.days > 4) {
-        console.log(task.date);         // Affiche la date de la tâche
-        console.log(task.days);         // Affiche le nombre de jours
-        console.log(task.description);  // Affiche la description
-        console.log(task.labelTask);    // Affiche le libellé de la tâche
+// for (let task of taskListTwo) {
+//     // Si le nombre de jours de la tâche est supérieur à 4
+//     if (task.days > 4) {
+//         console.log(task.date);         // Affiche la date de la tâche
+//         console.log(task.days);         // Affiche le nombre de jours
+//         console.log(task.description);  // Affiche la description
+//         console.log(task.labelTask);    // Affiche le libellé de la tâche
 
-        totalSomme = somme(totalSomme, task.days); // Additionner le nombre de jours à totalSomme
+//         totalSomme = somme(totalSomme, task.days); // Additionner le nombre de jours à totalSomme
 
-    }
-}
-
-
-function somme(a: number, b: number): number {
-return a + b;
-}
-
-console.log('Total des jours des tâches > 4 jours:', totalSomme);
+//     }
+// }
 
 
+// function somme(a: number, b: number): number {
+// return a + b;
+// }
+
+// console.log('Total des jours des tâches > 4 jours:', totalSomme);
+
+
+const tasks = [taskFor, taskFive, taskSix];
+
+const taskResult = tasks.filter((task) =>  task.days > 4);
+
+console.log(taskResult);
+
+
+const initialValue = 0;
+const sumWithInitial = taskResult.reduce(
+  (accumulator, task) => accumulator + task.days,
+  initialValue,
+);
+
+
+
+console.log(sumWithInitial);
+
+const taskResult2 = tasks.map((taskResult) => {
+    return taskResult.days * 2;
+});
+
+console.log(taskResult2);
+
+
+
+
+
+taskResult.forEach((task) => task.days = task.days * 2);
+
+taskResult.forEach((task) => console.log(task.days));
 
 
 
